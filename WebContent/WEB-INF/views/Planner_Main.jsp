@@ -1036,7 +1036,7 @@
          
           var totalTime;
           //ODsay apiKey 입력
-          var url = "https://api.odsay.com/v1/api/searchPubTransPathT?SX=" + fX + "&SY=" + fY + "&EX=" + sX + "&EY=" + sY + "&apiKey=Ts9gF0UZn72C1egPNrd94hargxtwCgxC5w91CKJMAEo"; //대중교통 길찾기
+          var url = "https://api.odsay.com/v1/api/searchPubTransPathT?SX=" + fX + "&SY=" + fY + "&EX=" + sX + "&EY=" + sY + "&apiKey=ITcr4bAqpCpnHxMdnAdPJA"; //대중교통 길찾기
           
           $('.mask').show();
           setTimeout(function() {
@@ -1412,7 +1412,7 @@
         function searchPubTransPathAJAX(sx,sy,ex,ey) 
         {
           //ODsay apiKey 입력
-          var url = "https://api.odsay.com/v1/api/searchPubTransPathT?SX=" + sx + "&SY=" + sy + "&EX=" + ex + "&EY=" + ey + "&apiKey=Ts9gF0UZn72C1egPNrd94hargxtwCgxC5w91CKJMAEo"; //대중교통 길찾기
+          var url = "https://api.odsay.com/v1/api/searchPubTransPathT?SX=" + sx + "&SY=" + sy + "&EX=" + ex + "&EY=" + ey + "&apiKey=ITcr4bAqpCpnHxMdnAdPJA"; //대중교통 길찾기
           var jsonTest;
           
           
@@ -1467,7 +1467,7 @@
         {
         	erasePolyLine();
           //ODsay apiKey 입력
-          var url = "https://api.odsay.com/v1/api/loadLane?mapObject=0:0@" + mabObj + "&apiKey=Ts9gF0UZn72C1egPNrd94hargxtwCgxC5w91CKJMAEo"; // 노선 그래픽 데이터 검색
+          var url = "https://api.odsay.com/v1/api/loadLane?mapObject=0:0@" + mabObj + "&apiKey=ITcr4bAqpCpnHxMdnAdPJA"; // 노선 그래픽 데이터 검색
          
           $('.mask').show();
           setTimeout(function() {
