@@ -391,7 +391,7 @@
 	<!-- Naver 지도 기능 -->
 	<!-- Naver Developers에서 발급받은 네이버지도 Application Key 입력  -->
 	<script type="text/javascript"
-		src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=f8bi3bf0q2"></script>
+		src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=8m7v5nn9jl"></script>
 	<script type="text/javascript">
       let polyArray = new Array();      // 상세 길찾기 버튼 클릭, 일정 삭제 시 마다 폴리라인 초기화 해주기 위해서 전역변수 + let으로 초기화
         let markerArray = new Array();      // 일정 삭제 시 해당 일정의 마커도 삭제 하기 위해 전역변수 + let으로 초기화
