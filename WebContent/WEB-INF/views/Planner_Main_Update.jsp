@@ -727,7 +727,7 @@
 				  
 				  // 길찾기 API AJAX 호출 -> 결과 json 반환
 				  var city= searchPubTransPathAJAX(firDesX, firDesY, secDesX, secDesY);
-				  console.log(city);
+				  //console.log(city);
 				  
 					
 				  // 팝업창
@@ -1246,7 +1246,7 @@
         	  success : function(result)
 			  {
         		  
-        		  console.log(result);
+        		  //console.log(result);
         		  if (result.error != null) 
         		  {
         			  totalTime = "경로데이터가 존재하지 않습니다";
