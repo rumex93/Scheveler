@@ -412,8 +412,8 @@
             </nav><!-- end navbar -->
         </div><!-- end header -->
 
-        <div id="planner_first_content">
-            <div class="planner_first_desc">
+        <div id="planner_first_content" style="overflow: scroll;">
+            <div class="planner_first_desc" >
                 <h1>스케블러에서 여행을 시작하세요!</h1>
                 <ul>
                     <li>
@@ -436,7 +436,7 @@
             <div>
                 <h2 class="planner_title">플래너 작성</h2>
                 <form name="planner_form" id="planner_form" action="plannercreateform2.action" method="post">
-                    <div>
+                    <div >
                         <table class="table planner_table">
                             <tr>
                                 <td>플래너 제목</td>

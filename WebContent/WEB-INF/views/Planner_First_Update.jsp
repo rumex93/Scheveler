@@ -412,7 +412,7 @@
             </nav><!-- end navbar -->
         </div><!-- end header -->
 
-        <div id="planner_first_content">
+        <div id="planner_first_content" style="overflow: scroll;">
             <div class="planner_first_desc">
                 <h1>스케블러에서 여행을 시작하세요!</h1>
                 <ul>
