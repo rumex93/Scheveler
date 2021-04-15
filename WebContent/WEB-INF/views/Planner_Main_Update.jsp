@@ -364,7 +364,7 @@
 				<div class="search_bar">
 					<input type="text" id="areasearchkeyword" name="areasearchkeyword"
 						placeholder="검색어를 입력해주세요." onfocus="this.placeholder=''"
-						onblur="this.placeholder='검색어를 입력해주세요.'">
+						onblur="this.placeholder='검색어를 입력해주세요.'" value="서울">
 					<div class="xi-search xi-x area_search"></div>
 				</div>
 				<!-- end search_bar -->
