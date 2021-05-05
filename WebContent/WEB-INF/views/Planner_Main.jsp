@@ -640,11 +640,11 @@
 				{
 					var checkTime =  $('.startHr[data-day='+ i +']').eq(j).html();
 					
-					if (checkTime == "")
+					/* if (checkTime == "")
 					{
 						alert(i + "일차에 시간설정을 해주세요.");
 						return false;
-					}
+					} */
 					
 				}
 				
@@ -1051,7 +1051,7 @@
         		  //console.log(result);
         		  if (result.error != null) 
         		  {
-        			  totalTime = "경로데이터가 존재하지 않습니다";
+        			  totalTime = "0";
 				  }
         		  else
         		  {

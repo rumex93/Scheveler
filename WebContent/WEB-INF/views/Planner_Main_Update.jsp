@@ -159,18 +159,18 @@
 										<div class="xi-alarm-o"></div>
 										<input type="number" style="width:40px;" class="hr" data-day="${day }" value="1" min="0" max="23">시간
 										<input type="number" style="width:40px;" class="min" data-day="${day }" value="0" min="0" max="59" step="10">분
-										<button class="decide-time btn btn-warning" style="width: 80px; height:35px;">일일 시작</button><br><br>
+										<button class="decide-time btn btn-warning" style="width: 80px; height:35px;">시간 설정</button><br><br>
 										<div class="setTime" style="display:none;">
 											<form>
 												<table class="table" id="table">
 													<tbody>
 														<tr>
-															<th colspan="2">일일 시작</th>
+															<th colspan="2">시간 설정</th>
 														</tr>
 														<tr>
 															<td colspan="2">
-																<input type="number" style="width:40px;" class="stay-hr" data-day="${day }" value="8" min="0" max="23">시
-																<input type="number" style="width:40px;" class="stay-min" data-day="${day }" value="0" min="0" max="59" step="10">분
+																<input type="number" style="width:40px;" class="stay-hr" data-day="${day }" value="${fn:substring(schedule.schedule_start_time,0,2) }" min="0" max="23">시
+																<input type="number" style="width:40px;" class="stay-min" data-day="${day }" value="${fn:substring(schedule.schedule_start_time,3,5)}" min="0" max="59" step="10">분
 															</td>
 														</tr>
 													</tbody>
@@ -248,25 +248,7 @@
 										<div class="xi-alarm-o"></div>
 										<input type="number" style="width:40px;" class="hr" data-day="${day }" value="1" min="0" max="23">시간
 										<input type="number" style="width:40px;" class="min" data-day="${day }" value="0" min="0" max="59" step="10">분
-										<button class="decide-time btn btn-warning" style="width: 80px; height:35px;">일일 시작</button><br><br>
-										<div class="setTime" style="display:none;">
-											<form>
-												<table class="table" id="table">
-													<tbody>
-														<tr>
-															<th colspan="2">일일 시작</th>
-														</tr>
-														<tr>
-															<td colspan="2">
-																<input type="number" style="width:40px;" class="stay-hr" data-day="${day }" value="8" min="0" max="23">시
-																<input type="number" style="width:40px;" class="stay-min" data-day="${day }" value="0" min="0" max="59" step="10">분
-															</td>
-														</tr>
-													</tbody>
-													</table><br>
-													<button type="button" class="btn save_btn btn-danger">설정</button>
-											</form>
-										</div>
+										
 										<p>시작 
 										<span class="startHr" data-day="${day }">${fn:substring(schedule.schedule_start_time,0,2) }</span>:<span class="startMin" data-day="${day }">${fn:substring(schedule.schedule_start_time,3,5)} </span> 
 										~ 
@@ -822,11 +804,11 @@
 				{
 					var checkTime =  $('.startHr[data-day='+ i +']').eq(j).html();
 					
-					if (checkTime == "")
+					/* if (checkTime == "")
 					{
 						alert(i + "일차에 시간설정을 해주세요.");
 						return false;
-					}
+					} */
 					
 				}
 				
@@ -1249,7 +1231,7 @@
         		  //console.log(result);
         		  if (result.error != null) 
         		  {
-        			  totalTime = "경로데이터가 존재하지 않습니다";
+        			  totalTime = "0";
 				  }
         		  else
         		  {
@@ -1453,7 +1435,7 @@
 		                            + '<div class="coice_area_time">'
 		                            + '<div class="xi-alarm-o"></div>'
 		                            + '<input type="number" style="width:40px;" class="hr" data-day='+ day +'  value="1" min="0" max="23"/>시간<input type="number" style="width:40px;" class="min" data-day='+ day +' value="0" min="0" max="59" step="10"/>분'
-		                            + '<button class="decide-time btn btn-warning" style="width: 80px; height:35px;">일일 시작</button>'
+		                            + '<button class="decide-time btn btn-warning" style="width: 80px; height:35px;">시간 설정</button>'
 		                            + '<br /><br />'
 		                            <!-- 시간설정 레이어 토글-->
 		                             
@@ -1461,7 +1443,7 @@
 		                            + '<form>'
 		                            + '<table class="table" id="table">'
 		                               + '<tbody>'
-		                                  + '<tr><th colspan="2">일일 시작</th></tr>'
+		                                  + '<tr><th colspan="2">시간 설정</th></tr>'
 		                                  + '<tr><td colspan="2">'
 		                                  + '<input type="number" style="width:40px;" class="stay-hr" data-day='+ day +'  value="8" min="0" max="23"/>시'
 		                                  + '<input type="number" style="width:40px;" class="stay-min" data-day='+ day +' value="0" min="0" max="59" step="10"/>분'
@@ -1518,8 +1500,9 @@
 
 
 
-						$('.sortable[data-sortlist=' + day + ']').append(
-							'<div class="destination draggable ui-sortable-handle">'
+						$('.sortable[data-sortlist=' + day + ']').append
+							(
+							'<div class="destination draggable ui-sortable-handle" data-day="' +day + '" data-areaval="1" >'
 							+ '<div class="transit_time">'
 							+ '   <div class="xi-time-o"></div>'
 							+ '   <span class="takenTime" data-day =' + day + '></span>분'
@@ -1532,62 +1515,56 @@
 
 							+ '</div>'
 
-							+ '<input type="hidden" class="x" value=' + mapx + ' />'
-							+ '<input type="hidden" class="y" value=' + mapy + ' />'
-							+ '<input type="hidden" class="day" value='+ day +' />'
-							+ '<input type="hidden" class="isFirst" value="0" />'
-
-							+ '<div class="schedule_choice_area">'
-
-							+ '   <span class="dest_name">' + title + ' </span> <br>'
-							+ '   <div class="xi-close-min xi-x"></div>'
-							+ '   <div class="choice_area_content">'
-							+ '      <div class="choice_area_image">'
-							+ '         <img'
-							+ '            src=' + imgsrc + '>'
-							+ '      </div>'
-
-							+ '      <div class="coice_area_time">'
-							+ '         <div class="xi-alarm-o"></div>'
-							+ '         <input type="number" style="width: 40px;" class="hr" data-day=' + day + ' value="1"'
-							+ '            min="0" max="23" />시간<input type="number"'
-							+ '            style="width: 40px;" class="min" data-day=' + day + ' value="0" min="0" max="59"'
-							+ '            step="10" />분'
-							+ '         <p>'
-							+ '            시작 <span class="startHr" data-day=' + day + '></span>:<span class="startMin" data-day=' + day + '></span> ~ 종료 <span class="endHr" data-day=' + day + '></span>:<span class="endMin" data-day=' + day + '></span>'
-							+ '         </p>'
-							+ '         <a class="comment"><i class="xi-comment-o xi-x"></i>메모</a>'
-
-
-							+ '         <div class="memo">'
-							+ '            <i class="xi-close"></i>'
-							+ '            <form>'
-							+ '               <table class="table" id="table">'
-							+ '                  <tbody>'
-							+ '                     <tr>'
-							+ '                        <th colspan="2">메모</th>'
-							+ '                     </tr>'
-							+ '                     <tr>'
-							+ '                        <td colspan="2"><textarea class="detailmemo"'
-							+ '                              id="detailmemo" name="detailmemo"></textarea></td>'
-							+ '                     </tr>'
-							+ '                  </tbody>'
-							+ '               </table>'
-							+ '               <br>'
-
-							+ '               <button type="button" class="btn save_btn">저장하기</button>'
-							+ '               <button type="reset" class="btn delete_btn">비우기</button>'
-							+ '            </form>'
-							+ '         </div>'
-
-							+ '      </div>'
-
-							+ '   </div>'
-
-							+ '</div>'
-
-							+ '</div>'
-
+							
+							
+							
+							
+							//-------------------------------------------
+							  + '<input type="hidden" class="x" value='+ mapx +' />'
+		                      + '<input type="hidden" class="y" value='+ mapy +' />'
+		                      + '<input type="hidden" class="day" value='+ day +' />'
+		                      + '<input type="hidden" class="isFirst" value="0" />'
+		                      + '<div class="schedule_choice_area">'
+		                         + '<span class="dest_name">'+ title +' </span> <br>'
+		                         + '<div class="choice_area_content">'
+		                            + '<div class="choice_area_image">'
+		                               + '<img src='+ imgsrc +'>'
+		                            + '</div>' <!-- end choice_area_image -->
+		                            + '<div class="coice_area_time">'
+		                            + '<div class="xi-alarm-o"></div>'
+		                            + '<input type="number" style="width:40px;" class="hr" data-day='+ day +'  value="1" min="0" max="23"/>시간<input type="number" style="width:40px;" class="min" data-day='+ day +' value="0" min="0" max="59" step="10"/>분'		                 		                       
+		                            + '<p>'
+		                            + '시작 <span class="startHr" data-day=' + day + '></span>:<span class="startMin" data-day=' + day + '></span> ~ 종료 <span class="endHr" data-day=' + day + '></span>:<span class="endMin" data-day=' + day + '></span>'
+		                            + '</p>'
+		                            + '<a class="comment"><i class="xi-comment-o xi-x"></i>메모</a>'
+		                            
+		                            + '<div class="memo">'<!-- 메모 레이어 팝업-->
+		                               + '<i class="xi-close"></i>'
+		                               + '<form><table class="table" id="table">'
+		                               + '<tbody>'
+		                               + '<tr><th colspan="2">메모</th></tr>'
+		                               + '<tr><td colspan="2"><textarea class="detailmemo" id="detailmemo" name="detailmemo" rows="4" cols="4"></textarea></td></tr>'
+		                               + '</tbody>'
+		                               + '</table><br>'
+		                               + '<button type="button" class="btn save_memo_btn">저장하기</button><button type="reset" class="btn delete_btn">비우기</button>'
+		                               + '</form>'
+		                            + '</div>' <!-- end 메모 팝업창 -->
+		                            
+		                            + '</div>' <!-- end coice_area_time -->
+		                             
+		                         + '</div>' <!-- end choice_area_content -->
+		                      + '</div>'<!-- end schedule_choice_area start-point-->
+		                   + '</div>'<!-- end destination -->
+							
+							
+							
+							
+							
+							
+							
+							
+							//-----------------------------------
+							
 						);
 
 
